@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ListContainer = styled.div`
-  
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -12,5 +11,4 @@ export const ListContainer = styled.div`
     /* border: 1px solid black; */
     border-radius: 2px;
   }
-
-`;
+`

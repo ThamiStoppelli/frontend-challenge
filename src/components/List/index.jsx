@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import api from '../../services/api'
 import moment from 'moment';
-import { ListContainer } from "./style";
+import { ListContainer} from "./style";
+import Loading from '../Loading'
 // import "../../index.css";
 
 export default function List() {
@@ -25,7 +26,6 @@ export default function List() {
 
   return (
     <ListContainer>
-
       <Table striped bordered hover >
         <thead>
           <tr>
@@ -35,10 +35,9 @@ export default function List() {
             <th>Actions</th>
           </tr>
         </thead>
-      
-        <tbody>
-          {data&&data.map((data) => {
-            return(
+        {data ? data.map((data) => {
+          return(
+            <tbody>
               <tr key={data.id.value}>
                 <td> { data.name.first } </td>
                 <td> { data.gender } </td>
@@ -49,13 +48,13 @@ export default function List() {
                   <viewButton >View </viewButton>
                 </td>
               </tr>
-            )
-          })
-        }
-        </tbody>
+            </tbody>
+          )})
+        : null }
       </Table>
-
+      {data ? null : <Loading />}
     </ListContainer>
+
   )
 }
 
