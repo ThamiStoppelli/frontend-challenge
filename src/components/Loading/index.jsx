@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Carregando } from "./style";
+import React from 'react';
+import { Container, Carregando, Texto } from "./style";
 
 export default function Loading() {
   return (
-    <Carregando />
+    <Container >
+      <Carregando />
+      <Texto>Loading more...</Texto>
+    </Container>
   )
 }
