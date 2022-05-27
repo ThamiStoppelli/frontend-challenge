@@ -57,4 +57,5 @@ export const ContainerModal = styled.div`
   width: 500px;
   border-radius: 16px;
   background-color: white;
+  padding: 10px;
 `

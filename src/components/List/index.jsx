@@ -10,10 +10,11 @@ export default function List() {
   const [data, setData] = useState()
   const [moreData, setMoreData] = useState()
   const [modal, setModal] = useState(false)
+  const [oneData, setOneData] = useState(false)
 
   async function loadData() {
     let arrAux = []
-    for(let i = 0; i < 50; i++){
+    for(let i = 0; i < 5; i++){
       const data = await (await api.get(`/`)).data
       const result = data.results[0]
       arrAux.push(result)
@@ -28,7 +29,7 @@ export default function List() {
   async function loadMoreData(){
     let arrAux = [];
 
-    for(let i = 0; i < 50; i++){
+    for(let i = 0; i < 5; i++){
       const data = await (await api.get(`/`)).data
       const result = data.results[0]
       arrAux.push(result)
@@ -36,9 +37,10 @@ export default function List() {
     setMoreData(arrAux)
  }
 
- function showModal() {
+ function showModal(data) {
   setModal(!modal);
-  console.log('vai')
+  console.log(data)
+  setOneData(data)
 }
 
   return (
@@ -61,7 +63,7 @@ export default function List() {
                 <td> { data.gender } </td>
                 <td> {moment(data.dob.date).format('DD/MM/YYYY')} </td>
                 <td> 
-                  <ViewButton onClick={() => showModal()}>View </ViewButton>
+                  <ViewButton onClick={() => showModal(data)}>View </ViewButton>
                 </td>
               </tr>
             </tbody>
@@ -78,7 +80,7 @@ export default function List() {
                   <td> { data.gender } </td>
                   <td> {moment(data.dob.date).format('DD/MM/YYYY')} </td>
                   <td> 
-                    <ViewButton onClick={() => showModal()}>View </ViewButton>
+                    <ViewButton onClick={() => showModal(data)}>View </ViewButton>
                   </td>
                 </tr>
               </tbody>
@@ -92,7 +94,16 @@ export default function List() {
     {modal ? (
       <FundoModal onClick={() => showModal()}>
         <ContainerModal>
-          <p>teste</p>
+          <p>Imagem: {}</p>
+          <p>Nome completo: {oneData.name.first} {oneData.name.last}</p>
+          <p>Email: {oneData.email}</p>
+          <p>Gênero: {oneData.gender}</p>
+          <p>Data de naascimento: {moment(oneData.dob.date).format('DD/MM/YYYY')}</p>
+          <p>Telefone: {oneData.phone}</p>
+          <p>Nacionalidade: {}</p>
+          <p>Endereço: {}</p>
+          <p>ID (número de identificação): {}</p>
+          <p>URL para compartilhamento: {}</p>
         </ContainerModal>
       </FundoModal>)
     : null}
