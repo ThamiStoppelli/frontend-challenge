@@ -14,7 +14,7 @@ export default function List() {
 
   async function loadData() {
     let arrAux = []
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 50; i++){
       const data = await (await api.get(`/`)).data
       const result = data.results[0]
       arrAux.push(result)
@@ -29,7 +29,7 @@ export default function List() {
   async function loadMoreData(){
     let arrAux = [];
 
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 50; i++){
       const data = await (await api.get(`/`)).data
       const result = data.results[0]
       arrAux.push(result)
