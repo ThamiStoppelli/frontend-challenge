@@ -21,8 +21,5 @@ export const Container = styled.div`
     justify-content: center;
     margin-left: 20px;
   }
-  .user {
-    margin-right: 50px;
-  }
 
 `;

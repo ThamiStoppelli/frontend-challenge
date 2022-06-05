@@ -4,6 +4,7 @@ import api from '../../services/api'
 import moment from 'moment';
 import { ListContainer, ViewButton, BotaoCarregarDados, TextoBotaoDados, FundoModal, ContainerModal, Imagem} from "./style";
 import Loading from '../Loading'
+import closeIcon from '../../assets/close.png';
 
 export default function List() {
 
@@ -92,20 +93,22 @@ export default function List() {
       </BotaoCarregarDados>
     </ListContainer>
     {modal ? (
-      <FundoModal onClick={() => showModal()}>
+      <FundoModal>
         <ContainerModal>
           <img src={oneData.picture.medium} />
-          <p>Nome completo: {oneData.name.first} {oneData.name.last}</p>
-          <p>Email: {oneData.email}</p>
-          <p>Gênero: {oneData.gender}</p>
-          <p>Data de naascimento: {moment(oneData.dob.date).format('DD/MM/YYYY')}</p>
-          <p>Telefone: {oneData.phone}</p>
-          <p>Nacionalidade: {oneData.nat}</p>
-          <p>Endereço: {oneData.location.street.name}, {oneData.location.street.number}</p>
-          <p>ID (número de identificação): {oneData.id.value}</p>
-          <p>URL para compartilhamento: {oneData.picture.large}</p>
+          <img className='closeIcon' src={closeIcon} onClick={() => showModal()}/>
+          <p><b>Nome completo:</b> {oneData.name.first} {oneData.name.last}</p>
+          <p><b>E-mail:</b> {oneData.email}</p>
+          <p><b>Gênero: </b> {oneData.gender}</p>
+          <p><b>Data de nascimento:</b> {moment(oneData.dob.date).format('DD/MM/YYYY')}</p>
+          <p><b>Telefone:</b> {oneData.phone}</p>
+          <p><b>Nacionalidade:</b> {oneData.nat}</p>
+          <p><b>Endereço:</b> {oneData.location.street.name}, {oneData.location.street.number}</p>
+          <p><b>ID (número de identificação):</b> {oneData.id.value}</p>
+          <p><b>URL para compartilhamento:</b> {oneData.picture.large}</p>
         </ContainerModal>
-      </FundoModal>)
+      </FundoModal>
+      )
     : null}
     </div>
 

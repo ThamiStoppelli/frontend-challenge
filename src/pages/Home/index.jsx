@@ -13,8 +13,8 @@ export default function Home() {
       <Header />
       <Page>
         <input className='search' type='text' placeholder='Searching' />
+        <List />
       </Page>
-      <List />
     </>
   )
 }
